@@ -1,10 +1,5 @@
 const state = {
-  todos: [
-    {
-      id: 1,
-      title: 'Hello',
-    },
-  ],
+  todos: [],
 };
 
 const getters = {
@@ -13,9 +8,21 @@ const getters = {
   },
 };
 
-const actions = {};
+const actions = {
+  addTodo({ commit }, title) {
+    commit('AddTodo', title);
+  },
+};
 
-const mutations = {};
+const mutations = {
+  AddTodo: (state, todo) => {
+    let tod = {
+      id: Math.random(),
+      title: todo,
+    };
+    state.todos = [tod, ...state.todos];
+  },
+};
 
 export default {
   state,
