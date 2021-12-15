@@ -7,21 +7,22 @@
       <li>
         {{ todo.title }}
       </li>
-      <span @click="removeTodo(todo)">X</span>
+      <span @click="removeTod(todo.id)">X</span>
     </div>
   </ul>
 </template>
 
 <script>
-import { mapGetters } from 'vuex';
+import { mapActions, mapGetters } from 'vuex';
 export default {
   name: 'ShowTodo',
   props: {
     todos: Array,
   },
   methods: {
-    removeTodo(todo) {
-      this.$emit('remove-todo', todo);
+    ...mapActions(['removeTodo']),
+    removeTod(id) {
+      this.removeTodo(id);
     },
   },
   computed: mapGetters(['allTodos']),
