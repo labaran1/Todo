@@ -1,17 +1,17 @@
 <template>
   <center class="home">
-    <AddTodo @add-todo="Add" />
-    <ShowTodo :todos="todos" @remove-todo="Remove" />
+    <AddTodo />
+    <ShowTodo />
   </center>
 </template>
 
 <script>
 // @ is an alias to /src
-import AddTodo from "@/components/AddTodo";
-import ShowTodo from "../components/ShowTodo.vue";
+import AddTodo from '@/components/AddTodo';
+import ShowTodo from '../components/ShowTodo.vue';
 
 export default {
-  name: "Home",
+  name: 'Home',
   components: {
     AddTodo,
     ShowTodo,
@@ -21,14 +21,7 @@ export default {
       todos: [],
     };
   },
-  methods: {
-    Add(todo) {
-      this.todos = [...this.todos, todo];
-    },
-    Remove(todo) {
-      this.todos = this.todos.filter((tod) => todo !== tod);
-    },
-  },
+  methods: {},
 };
 </script>
 
