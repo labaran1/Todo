@@ -1,11 +1,11 @@
 <template>
-  <div v-if="todos.length == 0">
+  <div v-if="allTodos.length == 0">
     <h3>Add New Todo</h3>
   </div>
-  <ul v-for="todo in todos" :key="todo">
+  <ul v-for="todo in allTodos" :key="todo.title">
     <div class="list">
       <li>
-        {{ todo }}
+        {{ todo.title }}
       </li>
       <span @click="removeTodo(todo)">X</span>
     </div>
@@ -13,15 +13,20 @@
 </template>
 
 <script>
+import { mapGetters } from 'vuex';
 export default {
-  name: "ShowTodo",
+  name: 'ShowTodo',
   props: {
     todos: Array,
   },
   methods: {
     removeTodo(todo) {
-      this.$emit("remove-todo", todo);
+      this.$emit('remove-todo', todo);
     },
+  },
+  computed: mapGetters(['allTodos']),
+  created() {
+    // console.log(this.allTodos);
   },
 };
 </script>
