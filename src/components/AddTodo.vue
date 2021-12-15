@@ -12,20 +12,23 @@
 </template>
 
 <script>
+import { mapActions } from 'vuex';
 export default {
-  name: "AddTodo",
+  name: 'AddTodo',
   data() {
     return {
-      todo: "",
+      todo: '',
     };
   },
+
   methods: {
+    ...mapActions(['addTodo']),
     addtodo() {
-      if (this.todo === "" || this.todo === null || this.todo === undefined) {
-        confirm("Please Enter a Todo");
+      if (this.todo === '' || this.todo === null || this.todo === undefined) {
+        confirm('Please Enter a Todo');
       } else {
-        this.$emit("add-todo", this.todo);
-        this.todo = "";
+        this.addTodo(this.todo);
+        this.todo = '';
       }
     },
   },
