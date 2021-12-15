@@ -12,6 +12,9 @@ const actions = {
   addTodo({ commit }, title) {
     commit('AddTodo', title);
   },
+  removeTodo({ commit }, id) {
+    commit('RemoveTodo', id);
+  },
 };
 
 const mutations = {
@@ -21,6 +24,9 @@ const mutations = {
       title: todo,
     };
     state.todos = [tod, ...state.todos];
+  },
+  RemoveTodo: (state, id) => {
+    state.todos = state.todos.filter((tod) => tod.id !== id);
   },
 };
 
